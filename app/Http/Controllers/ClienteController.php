@@ -12,7 +12,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        $clientes=cliente::all();
+        return view('clientes',['clientes'=>$clientes]);
     }
 
     /**
@@ -28,7 +29,14 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ingreso = new cliente();
+        $ingreso->nombre = $request->nombre;
+        $ingreso->domicilio = $request->domicilio;
+        $ingreso->cuit = $request->cuit;
+        $ingreso->email = $request->email;
+        $ingreso->save();
+        return redirect()->route('clientes')->with('alert',$request->nombre.' Cargado')->with('color','success');
+
     }
 
     /**
@@ -42,9 +50,15 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(cliente $cliente)
+    public function edit(Request $request)
     {
-        //
+        $edit=cliente::find($request->cliente_id);
+        $edit->nombre = $request->nombre;
+        $edit->domicilio = $request->domicilio;
+        $edit->cuit = $request->cuit;
+        $edit->email = $request->email;
+        $edit->save();
+        return redirect()->route('clientes')->with('alert',$request->nombre.' Editado')->with('color','success');
     }
 
     /**
@@ -58,8 +72,10 @@ class ClienteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(cliente $cliente)
+    public function destroy(Request $request)
     {
-        //
+        $del=cliente::find($request->cliente_id);
+        $del->delete();
+        return redirect()->route('clientes')->with('alert',$del->nombre.' Eliminado')->with('color','success');
     }
 }

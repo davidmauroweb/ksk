@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->smallIncrements('id');
-            $table->string('nombre', 50)->nullable('false');
-            $table->string('domicilio',50);
-            $table->string('cuit',13)->unique();
-            $table->string('email')->unique();
+            $table->string('nombre', 50);
+            $table->string('domicilio',50)->nullable();
+            $table->string('cuit',13)->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }

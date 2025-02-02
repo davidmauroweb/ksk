@@ -22,3 +22,8 @@ Route::get('/marcas', [MarcaController::class, 'index'])->name('marcas');
 Route::post('/nmarcas', [MarcaController::class, 'store'])->name('nmarcas');
 Route::post('/dmarcas', [MarcaController::class, 'destroy'])->name('dmarcas');
 Route::post('/emarcas', [MarcaController::class, 'edit'])->name('emarcas');
+#Clientes
+Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes');
+Route::post('/nclientes', [ClienteController::class, 'store'])->name('nclientes');
+Route::post('/dclientes', [ClienteController::class, 'destroy'])->name('dclientes');
+Route::post('/eclientes', [ClienteController::class, 'edit'])->name('eclientes');

@@ -31,7 +31,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <i class='bi bi-boxes'></i> {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -59,51 +59,6 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
-                                <a class="dropdown-item" href="{{route('cat')}}">
-                                <i class="bi bi-calendar2"></i> Categorias
-                                </a>
-                                <a class="dropdown-item" href="{{route('marcas')}}">
-                                <i class="bi bi-bookmark-check-fill"></i> Marcas
-                                </a>
-                                <button type="button" class="dropdown-item btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#pw"><i class="bi bi-gear-fill"> Clave</i></button>
-                                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        <i class="bi bi-box-arrow-left"></i> {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-@if (session('alert'))
-<div class="toast fade align-items-center text-bg-{{session('color')}} position-fixed top-0 end-0 mx-7 my-4 border-3" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000" data-bs-autohide="true">
-  <div class="d-flex">
-    <div class="toast-body">
-      {{session('alert')}}
-    </div>
-    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-  </div>
-</div>
-<script>
-$(document).ready(function(){
-  $('.toast').toast('show');
-});
-</script>
-@endif
-
 
                                         <!-- ModalEdit -->
                                         <div class="modal fade" id="pw" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -144,6 +99,65 @@ $(document).ready(function(){
                                             </div>
                                         </div>
                                         <!-- ModalEdit -->
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" href="">
+                                <i class="bi bi-bag-fill"></i> Articulos
+                                </a>
+
+                                <a class="dropdown-item" href="{{route('cat')}}">
+                                <i class="bi bi-calendar2"></i> Categorias
+                                </a>
+
+                                <a class="dropdown-item" href="{{route('clientes')}}">
+                                <i class="bi bi-person-square"></i> Clientes
+                                </a>
+
+                                <a class="dropdown-item" href="{{route('marcas')}}">
+                                <i class="bi bi-bookmark-check-fill"></i> Marcas
+                                </a>
+
+                                
+                                <button type="button" class="dropdown-item btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#pw"><i class="bi bi-gear-fill"> Clave</i></button>
+                                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        <i class="bi bi-box-arrow-left"></i> {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+@if (session('alert'))
+<div class="toast fade align-items-center text-bg-{{session('color')}} position-fixed top-0 end-0 mx-7 my-4 border-3" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000" data-bs-autohide="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      {{session('alert')}}
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>
+<script>
+$(document).ready(function(){
+  $('.toast').toast('show');
+});
+</script>
+@endif
+
+
+                                        
 
 
         <main class="py-4">

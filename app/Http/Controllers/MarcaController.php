@@ -79,6 +79,6 @@ class MarcaController extends Controller
     {
         $del=marca::find($request->marca_id);
         $del->delete();
-        return redirect()->route('marcas')->with('alert',$del->nombre.' Eliminada')->with('color','danger');
+        return redirect()->route('marcas')->with('alert',$del->nombre.' Eliminada')->with('color','success');
     }
 }

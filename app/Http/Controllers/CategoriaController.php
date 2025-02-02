@@ -79,6 +79,6 @@ class CategoriaController extends Controller
     {
         $del=categoria::find($request->cat_id);
         $del->delete();
-        return redirect()->route('cat')->with('alert',$del->nombre.' Eliminada')->with('color','danger');
+        return redirect()->route('cat')->with('alert',$del->nombre.' Eliminada')->with('color','success');
     }
 }
