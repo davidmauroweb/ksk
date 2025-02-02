@@ -58,7 +58,7 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        @else
+                        @else <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#pw"><i class="bi bi-pencil-square"></i></button>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -103,6 +103,49 @@ $(document).ready(function(){
 });
 </script>
 @endif
+
+
+                                        <!-- ModalEdit -->
+                                        <div class="modal fade" id="pw" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                <form method="POST" action="{{ route('pw') }}">
+                                                @csrf
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Cambio de clave</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                                    <div class="row mb-3">
+                                                    <label for="name" class="col-md-4 col-form-label text-md-end">Clave anterior</label>
+                                                    <div class="col-md-6">
+                                                        <input id="name" type="password" class="form-control" name="o_pw" value="" required autocomplete="name" autofocus>
+                                                    </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                    <label for="name" class="col-md-4 col-form-label text-md-end">Nueva clave</label>
+                                                    <div class="col-md-6">
+                                                        <input id="name" type="password" class="form-control" name="n_pw" value="" required autocomplete="name" autofocus>
+                                                    </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                    <label for="name" class="col-md-4 col-form-label text-md-end">Confirmar clave</label>
+                                                    <div class="col-md-6">
+                                                        <input id="name" type="password" class="form-control" name="c_pw" value="" required autocomplete="name" autofocus>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success btn-sm">Editar</button>
+                                                    </div>
+                                                </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- ModalEdit -->
+
+
         <main class="py-4">
             @yield('content')
         </main>

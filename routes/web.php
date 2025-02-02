@@ -11,6 +11,7 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::post('/pw', [HomeController::class, 'pw'])->name('pw');
 #Categorias
 Route::get('/cat', [CategoriaController::class, 'index'])->name('cat');
 Route::post('/ncat', [CategoriaController::class, 'store'])->name('ncat');
