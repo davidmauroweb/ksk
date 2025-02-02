@@ -42,7 +42,7 @@ class CategoriaController extends Controller
         $Ingreso = new categoria();
         $Ingreso->nombre = $request->nombre;
         $Ingreso->save();
-        return redirect()->route('cat')->with('alert','Categoria Cargada')->with('color','success');
+        return redirect()->route('cat')->with('alert',$request->nombre.' Cargada')->with('color','success');
     }
 
     /**
@@ -58,7 +58,10 @@ class CategoriaController extends Controller
      */
     public function edit(Request $request)
     {
-        //
+        $edit=categoria::find($request->cat_id);
+        $edit->nombre = $request->nombre;
+        $edit->save();
+        return redirect()->route('cat')->with('alert','Cateoría Editada')->with('color','success');
     }
 
     /**
@@ -76,6 +79,6 @@ class CategoriaController extends Controller
     {
         $del=categoria::find($request->cat_id);
         $del->delete();
-        return redirect()->route('cat')->with('alert','Categoria Eliminada')->with('color','danger');
+        return redirect()->route('cat')->with('alert',$del->nombre.' Eliminada')->with('color','danger');
     }
 }
