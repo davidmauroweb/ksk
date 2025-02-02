@@ -144,7 +144,7 @@
                                                     <div class="row mb-3">
                                                     <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Marca') }}</label>
                                                     <div class="col-md-6">
-                                                    <select class="form-select" aria-label="Default select example" name="cat_id">
+                                                    <select class="form-select" aria-label="Default select example" name="marca_id">
                                                         @foreach ($marcas as $m)
                                                         <option value="{{$m->id}}">{{$m->nombre}}</option>
                                                         @endforeach
