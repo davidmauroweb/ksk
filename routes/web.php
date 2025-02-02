@@ -14,3 +14,4 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/cat', [CategoriaController::class, 'index'])->name('cat');
 Route::post('/ncat', [CategoriaController::class, 'store'])->name('ncat');
 Route::post('/dcat', [CategoriaController::class, 'destroy'])->name('dcat');
+Route::post('/ecat', [CategoriaController::class, 'edit'])->name('ecat');

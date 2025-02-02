@@ -29,9 +29,11 @@
                             <th>{{$i->id}}</th>
                             <td>{{$i->nombre}}</td>
                             <td>{{$i->total}}</td>
-                            <td></td>
                             <td>
-                                <form action="{{route('dcat')}}">
+
+                            </td>
+                            <td>
+                                <form action="{{route('dcat')}}" method="post">
                                     @csrf
                                     <input type="hidden" name="cat_id" value="{{$i->id}}">
                                     <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\categoria;
+use App\Models\{categoria,art};
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -19,8 +19,8 @@ class CategoriaController extends Controller
     {
         $cats=DB::table('categorias')
         ->leftJoin('art', 'categorias.id', '=', 'art.cat_id')
-        ->select('categorias.id','categorias.nombre','art.cat_id AS total','art.cat_id')
-        ->groupBy('art.cat_id')
+        ->select('categorias.id','categorias.nombre',DB::raw('count(art.id) as total'),'art.cat_id')
+        ->groupBy('categorias.id')
         ->orderBy('categorias.nombre')
         ->get();
         return view('cat',['cats'=>$cats]);
@@ -42,7 +42,7 @@ class CategoriaController extends Controller
         $Ingreso = new categoria();
         $Ingreso->nombre = $request->nombre;
         $Ingreso->save();
-        return redirect()->route('cat')->withSuccess('Categoria Cargada');
+        return redirect()->route('cat')->with('alert','Categoria Cargada')->with('color','success');
     }
 
     /**
@@ -56,7 +56,7 @@ class CategoriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(categoria $categoria)
+    public function edit(Request $request)
     {
         //
     }
@@ -74,6 +74,8 @@ class CategoriaController extends Controller
      */
     public function destroy(Request $request)
     {
-        //
+        $del=categoria::find($request->cat_id);
+        $del->delete();
+        return redirect()->route('cat')->with('alert','Categoria Eliminada')->with('color','danger');
     }
 }
