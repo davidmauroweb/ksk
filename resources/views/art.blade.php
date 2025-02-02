@@ -101,7 +101,7 @@
 
                             </td>
                             <td>
-                                <form action="{{route('dart')}}" method="post">
+                                <form action="{{route('darts')}}" method="post">
                                     @csrf
                                     <input type="hidden" name="cat_id" value="{{$i->id}}">
                                     <button type="submit" class="btn btn-danger btn-sm" disable><i class="bi bi-trash-fill"></i></button>
