@@ -30,7 +30,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -58,7 +58,7 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        @else <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#pw"><i class="bi bi-pencil-square"></i></button>
+                        @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -66,12 +66,12 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
                                 <a class="dropdown-item" href="{{route('cat')}}">
-                                <i class="bi bi-bookmark-check-fill"></i> Categorias
+                                <i class="bi bi-calendar2"></i> Categorias
                                 </a>
                                 <a class="dropdown-item" href="{{route('marcas')}}">
                                 <i class="bi bi-bookmark-check-fill"></i> Marcas
                                 </a>
-
+                                <button type="button" class="dropdown-item btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#pw"><i class="bi bi-gear-fill"> Clave</i></button>
                                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
