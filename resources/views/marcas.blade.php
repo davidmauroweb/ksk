@@ -64,7 +64,7 @@
                                 <form action="{{route('dmarcas')}}" method="post">
                                     @csrf
                                     <input type="hidden" name="marca_id" value="{{$i->id}}">
-                                    <button type="submit" class="btn btn-danger btn-sm" @if ($i->total == 0) disabled @endif><i class="bi bi-trash-fill"></i></button>
+                                    <button type="submit" class="btn btn-danger btn-sm" @if ($i->total > 0) disabled @endif><i class="bi bi-trash-fill"></i></button>
                                 </form>
                             </td>
                             </tr>

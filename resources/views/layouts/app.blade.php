@@ -106,7 +106,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="{{route('arts')}}">
                                 <i class="bi bi-bag-fill"></i> Articulos
                                 </a>
 
