@@ -68,6 +68,9 @@
                                 <a class="dropdown-item" href="{{route('cat')}}">
                                 <i class="bi bi-bookmark-check-fill"></i> Categorias
                                 </a>
+                                <a class="dropdown-item" href="{{route('marcas')}}">
+                                <i class="bi bi-bookmark-check-fill"></i> Marcas
+                                </a>
 
                                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
