@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('accs', function (Blueprint $table) {
             $table->id();
             $table->date('fecha');
-            $table->string('acc',30);
-            $table->unsignedSmallInteger('cli_id');
-            $table->boolean('resta');
+            $table->string('acc',10);
+            $table->unsignedSmallInteger('cli_id')->nullable();
             $table->tinyText('obs')->nullable();
             $table->timestamps();
         });

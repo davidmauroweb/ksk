@@ -25,15 +25,13 @@
                         <select name="acc" id='acc' class="form-select">
                             <option value="Venta">Venta</option>
                             <option value="Compra">Compra</option>
-                            <option value="Devolución a Proveedores">Devolución a Proveedores</option>
-                            <option value="Devolución de Clientes">Devolución de Clientes</option>
                         </select>
                     </div>
                     <div class="col-4">
                         <label for="cli">Cliente</label>
                         <select name="cli_id" id='cli' class="form-select">
                             @foreach ($cli as $c)
-                            <option value="{{$c->id}}">{{$c->id}}{{$c->nombre}}</option>
+                            <option value="{{$c->id}}">{{$c->nombre}}</option>
                             @endforeach
                         </select>
                     </div>

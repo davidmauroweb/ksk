@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('movs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedSmallInteger('art_id')->nullable('false');
-            $table->smallInteger('cantidad')->nullable('false');
-            $table->unsignedMediumInteger('precio')->nullable('false');
-            $table->foreignId('acc_id')->nullable('false');
-            $table->tinyText('obs');
+            $table->unsignedSmallInteger('art_id');
+            $table->smallInteger('cantidad');
+            $table->unsignedMediumInteger('costo');
+            $table->unsignedMediumInteger('venta')->nullable();
+            $table->foreignId('acc_id');
+            $table->tinyText('obs')->nullable();
             $table->timestamps();
         });
     }
