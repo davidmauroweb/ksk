@@ -45,6 +45,7 @@ class ArtController extends Controller
         $Ingreso->nombre = $request->nombre;
         $Ingreso->cat_id = $request->cat_id;
         $Ingreso->marca_id = $request->marca_id;
+        $Ingreso->stock = 0;
         $Ingreso->repo = $request->repo;
         $Ingreso->save();
         return redirect()->route('arts')->with('alert',$request->nombre.' Agregado')->with('color','success');

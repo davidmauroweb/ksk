@@ -80,9 +80,16 @@
                                                     </div>
                                                     </div>
                                                     <div class="row mb-3">
-                                                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Precio') }}</label>
+                                                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('costo') }}</label>
                                                     <div class="col-md-6">
-                                                        <input id="name" type="text" class="form-control" name="precio" value="{{$i->precio}}" required autocomplete="name" autofocus pattern="^\d*(\.\d{0,2})?$">
+                                                        <input id="name" type="text" class="form-control" name="costo" value="{{$i->costo}}" required autocomplete="name" autofocus pattern="^\d*(\.\d{0,2})?$">
+                                                    </div>
+                                                    <div class="col-md-1 text-secondary col-form-label">*</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Venta') }}</label>
+                                                    <div class="col-md-6">
+                                                        <input id="name" type="text" class="form-control" name="venta" value="{{$i->venta}}" required autocomplete="name" autofocus pattern="^\d*(\.\d{0,2})?$">
                                                     </div>
                                                     <div class="col-md-1 text-secondary col-form-label">*</div>
                                                     </div>

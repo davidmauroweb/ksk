@@ -22,8 +22,8 @@ class HomeController extends Controller
     public function index()
     {
         $cli=DB::table('clientes')->select('id','nombre')->orderBy('nombre')->get();
-        return view('home',['cli'=>$cli]);
- 
+        $al=DB::table('art')->select('nombre','stock')->whereRaw('stock < repo')->get();
+        return view('home',['cli'=>$cli, 'al'=>$al]);
     }
     public function pw(Request $request)
     {

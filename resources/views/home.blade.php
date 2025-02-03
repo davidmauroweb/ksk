@@ -47,6 +47,21 @@
                     </div>
                     </form>
                 </div>
+                <div class="card-footer">
+                    Artícuos en Stock Crítico
+                <table class="table">
+                    <tr>
+                        <th>Art</th>
+                        <th>Stock</th>
+                    </tr>
+                    @foreach ($al as $a)
+                    <tr>
+                        <td>{{$a->nombre}}</td>
+                        <td>{{$a->stock}}</td>
+                    </tr>
+                    @endforeach
+                </table>
+                </div>
             </div>
         </div>
     </div>
