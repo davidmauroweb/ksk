@@ -106,6 +106,10 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
+                                <a class="dropdown-item" href="{{route('home')}}">
+                                <i class="bi bi-house-fill"></i> Inicio
+                                </a>
+
                                 <a class="dropdown-item" href="{{route('arts')}}">
                                 <i class="bi bi-bag-fill"></i> Articulos
                                 </a>
@@ -121,7 +125,6 @@
                                 <a class="dropdown-item" href="{{route('marcas')}}">
                                 <i class="bi bi-bookmark-check-fill"></i> Marcas
                                 </a>
-
                                 
                                 <button type="button" class="dropdown-item btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#pw"><i class="bi bi-gear-fill"> Clave</i></button>
                                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"

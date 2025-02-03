@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->date('fecha');
             $table->string('acc',30);
+            $table->unsignedSmallInteger('cli_id');
             $table->boolean('resta');
-            $table->tinyText('obs');
+            $table->tinyText('obs')->nullable();
             $table->timestamps();
         });
     }

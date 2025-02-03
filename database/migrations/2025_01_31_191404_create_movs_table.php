@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedSmallInteger('art_id')->nullable('false');
             $table->smallInteger('cantidad')->nullable('false');
             $table->unsignedMediumInteger('precio')->nullable('false');
-            $table->string('concepto',15)->nullable('false');
             $table->foreignId('acc_id')->nullable('false');
             $table->tinyText('obs');
             $table->timestamps();

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Inicio') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form class="form-inline" action="{{route('nvta')}}" method='post'>
+                    <form class="form-inline" action="{{route('nacc')}}" method='post'>
+                        @csrf
                         <div class="row">
                     <div class="col-4">
                         <label for="fecha">Fecha</label>
@@ -28,7 +29,21 @@
                             <option value="Devolución de Clientes">Devolución de Clientes</option>
                         </select>
                     </div>
-                    <div class="col-4 align-middle align-self-end">
+                    <div class="col-4">
+                        <label for="cli">Cliente</label>
+                        <select name="cli_id" id='cli' class="form-select">
+                            @foreach ($cli as $c)
+                            <option value="{{$c->id}}">{{$c->id}}{{$c->nombre}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    </div>
+                    <div class="row my-2">
+                    <div class="col-9">
+                        <label for="obs">Observaciones</label>
+                        <input type="text" id="obs" name="obs" max="250" class="form-control">
+                    </div>
+                    <div class="col-3 align-middle align-self-end">
                         <button class="btn btn-sm btn-success col-12">Nuevo Movimiento</button>
                     </div>
                     </div>

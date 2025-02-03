@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{ArtController,CategoriaController,ClienteController,MarcaController,MovController,VtaController,HomeController};
+use App\Http\Controllers\{ArtController,CategoriaController,ClienteController,MarcaController,MovController,AccController,HomeController};
 
 Route::get('/', function () {
     return view('auth/login');
@@ -32,5 +32,6 @@ Route::get('/arts', [ArtController::class, 'index'])->name('arts');
 Route::post('/narts', [ArtController::class, 'store'])->name('narts');
 Route::post('/darts', [ArtController::class, 'destroy'])->name('darts');
 Route::post('/earts', [ArtController::class, 'edit'])->name('earts');
-#Vtas
-Route::post('/nvta', [VtaController::class, 'store'])->name('nvta');
+#Accion
+Route::get('/accshow/{acc}', [AccController::class, 'show'])->name('accshow');
+Route::post('/nacc', [AccController::class, 'store'])->name('nacc');

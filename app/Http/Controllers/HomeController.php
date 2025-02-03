@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{User,cliente};
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,8 +21,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $clientes=cliente::all()->sortBy('nombre');
-        return view('home',['clientes'=>$clientes]);
+        $cli=DB::table('clientes')->select('id','nombre')->orderBy('nombre')->get();
+        return view('home',['cli'=>$cli]);
  
     }
     public function pw(Request $request)

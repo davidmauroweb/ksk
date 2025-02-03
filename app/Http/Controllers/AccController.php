@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\acc;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class AccController extends Controller
@@ -28,7 +29,20 @@ class AccController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nuevo = new acc();
+        $nuevo->fecha = $request->fecha;
+        $nuevo->acc = $request->acc;
+        $nuevo->obs = $request->obs;
+        if ($request->acc == "Venta" OR $request->acc=="Devolución a Proveedores"){
+            $nuevo->resta = 1;
+        }else{
+            $nuevo->resta = 0;
+        }
+        if ($request->acc == "Venta"){
+            $nuevo->cli_id = $request->cli_id;
+        }
+        $nuevo->save();
+        return redirect()->route('accshow',$nuevo->id);
     }
 
     /**
@@ -36,7 +50,13 @@ class AccController extends Controller
      */
     public function show(acc $acc)
     {
-        //
+        $movs=DB::table('movs')
+            ->join('art','movs.art_id','art.id')
+            ->where('movs.acc_id','=',$acc->id)
+            ->orderBy('movs.id')
+            ->get();
+        $cli=DB::table('clientes')->select('nombre','id')->where('id','=',$acc->cli_id)->first();
+        return view('movs-acc',['movs'=>$movs,'acc'=>$acc,'cli'=>$cli]);
     }
 
     /**
