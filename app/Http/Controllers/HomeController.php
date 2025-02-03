@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\{User,cliente};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,7 +20,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $clientes=cliente::all()->sortBy('nombre');
+        return view('home',['clientes'=>$clientes]);
  
     }
     public function pw(Request $request)

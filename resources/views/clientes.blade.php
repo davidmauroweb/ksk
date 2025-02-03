@@ -32,7 +32,7 @@
                             <td>{{$i->nombre}}</td>
                             <td>{{$i->domicilio}}</td>
                             <td>{{$i->cuit}}</td>
-                            <td>{{$i->mail}}</td>
+                            <td>{{$i->email}}</td>
                             <td>
                             <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit{{$i->id}}"><i class="bi bi-pencil-square"></i></button>
                                         <!-- ModalEdit -->

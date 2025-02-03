@@ -70,7 +70,7 @@
                                                     <div class="row mb-3">
                                                     <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Marca') }}</label>
                                                     <div class="col-md-6">
-                                                    <select class="form-select" aria-label="Default select example" name="cat_id">
+                                                    <select class="form-select" aria-label="Default select example" name="marca_id">
                                                         @foreach ($marcas as $m)
                                                         <option value="{{$m->id}}" @if($i->marca_id == $m->id) selected @endif>{{$m->nombre}}</option>
                                                         @endforeach
@@ -80,8 +80,9 @@
                                                     <div class="row mb-3">
                                                     <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Precio') }}</label>
                                                     <div class="col-md-6">
-                                                        <input id="name" type="text" class="form-control" name="precio" value="{{$i->precio}}" required autocomplete="name" autofocus>
+                                                        <input id="name" type="text" class="form-control" name="precio" value="{{$i->precio}}" required autocomplete="name" autofocus pattern="^\d*(\.\d{0,2})?$">
                                                     </div>
+                                                    <div class="col-md-1 text-secondary col-form-label">*</div>
                                                     </div>
                                                     <div class="row mb-3">
                                                     <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Repocición') }}</label>
@@ -90,7 +91,7 @@
                                                     </div>
                                                     </div>
                                                     </div>
-                                                    <div class="modal-footer">
+                                                    <div class="modal-footer text-secondary">* Dos decimales separado por punto (.)
                                                         <button type="submit" class="btn btn-success btn-sm">Editar</button>
                                                     </div>
                                                 </form>

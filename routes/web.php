@@ -32,3 +32,5 @@ Route::get('/arts', [ArtController::class, 'index'])->name('arts');
 Route::post('/narts', [ArtController::class, 'store'])->name('narts');
 Route::post('/darts', [ArtController::class, 'destroy'])->name('darts');
 Route::post('/earts', [ArtController::class, 'edit'])->name('earts');
+#Vtas
+Route::post('/nvta', [VtaController::class, 'store'])->name('nvta');

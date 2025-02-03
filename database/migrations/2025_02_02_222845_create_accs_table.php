@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vtas', function (Blueprint $table) {
+        Schema::create('accs', function (Blueprint $table) {
             $table->id();
             $table->date('fecha');
-            $table->unsignedSmallInteger('cli_id')->constrained()->nullable('false');
+            $table->string('acc',30);
+            $table->boolean('resta');
+            $table->tinyText('obs');
             $table->timestamps();
-            $table->foreign('cli_id')->references('id')->on('clientes');
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vtas');
+        Schema::dropIfExists('accs');
     }
 };

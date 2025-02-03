@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\vta;
+use App\Models\acc;
 use Illuminate\Http\Request;
 
-class VtaController extends Controller
+class AccController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class VtaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(vta $vta)
+    public function show(acc $acc)
     {
         //
     }
@@ -42,7 +42,7 @@ class VtaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(vta $vta)
+    public function edit(acc $acc)
     {
         //
     }
@@ -50,7 +50,7 @@ class VtaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, vta $vta)
+    public function update(Request $request, acc $acc)
     {
         //
     }
@@ -58,7 +58,7 @@ class VtaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(vta $vta)
+    public function destroy(acc $acc)
     {
         //
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('cat_id')->constrained()->nullable('false');
             $table->unsignedSmallInteger('marca_id')->constrained()->nullable('false');
             $table->mediumInteger('stock')->nullable('false');
-            $table->unsignedMediumInteger('precio')->nullable('false');
+            $table->decimal('precio', total: 8, places: 2)->nullable('false');
             $table->smallInteger('repo')->nullable('false');
             $table->timestamps();
             $table->foreign('cat_id')->references('id')->on('categorias');

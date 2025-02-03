@@ -61,9 +61,16 @@ class ArtController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(art $art)
+    public function edit(Request $request)
     {
-        //
+        $edit=art::find($request->art_id);
+        $edit->nombre = $request->nombre;
+        $edit->cat_id = $request->cat_id;
+        $edit->marca_id = $request->marca_id;
+        $edit->precio = $request->precio;
+
+        $edit->save();
+        return redirect()->route('arts')->with('alert', $request->nombre.' Editado')->with('color','success');
     }
 
     /**

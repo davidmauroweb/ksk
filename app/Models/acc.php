@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class vta extends Model
+class acc extends Model
 {
     //
 }
