@@ -144,7 +144,7 @@
             </div>
         </nav>
 @if (session('alert'))
-<div class="toast fade align-items-center text-bg-{{session('color')}} position-fixed top-0 end-0 mx-7 my-4 border-3" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000" data-bs-autohide="true">
+<div class="toast fade align-items-center text-bg-{{session('color')}} position-fixed top-0 start-50 translate-middle-x border-3" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2400" data-bs-autohide="true">
   <div class="d-flex">
     <div class="toast-body">
       {{session('alert')}}

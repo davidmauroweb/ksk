@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Gestión de Categorías
                 </div>
@@ -21,7 +21,8 @@
                             <th>Categoria</th>
                             <th>Marca</th>
                             <th>Stock</th>
-                            <th>Precio</th>
+                            <th>Costo</th>
+                            <th>Venta</th>
                             <th>Repoc</th>
                             <th></th>
                             <th></th>
@@ -35,7 +36,8 @@
                             <td>{{$i->cat_n}}</td>
                             <td>{{$i->marca_n}}</td>
                             <td>{{$i->stock}}</td>
-                            <td>{{$i->precio}}</td>
+                            <td>{{$i->costo}}</td>
+                            <td>{{$i->venta}}</td>
                             <td>{{$i->repo}}</td>
                             <td>
                             <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit{{$i->id}}"><i class="bi bi-pencil-square"></i></button>

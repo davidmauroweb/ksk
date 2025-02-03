@@ -20,7 +20,7 @@ class ArtController extends Controller
         $arts=DB::table('art')
         ->join('categorias', 'art.cat_id', '=', 'categorias.id')
         ->join('marcas','art.marca_id','=','marcas.id')
-        ->select('art.id','art.nombre','categorias.nombre as cat_n','categorias.id as cat_id','marcas.nombre as marca_n','marcas.id as marca_id','art.stock','art.precio','art.repo')
+        ->select('art.id','art.nombre','categorias.nombre as cat_n','categorias.id as cat_id','marcas.nombre as marca_n','marcas.id as marca_id','art.stock','art.costo','art.venta','art.repo')
         ->orderBy('art.nombre')
         ->get();
         $marcas=marca::all()->sortBy('nombre');
