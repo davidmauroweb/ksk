@@ -42,18 +42,19 @@
             var sel = $('#pro_id').find(':selected').val(); //Capturo el Value del Producto
             var text = $('#pro_id').find(':selected').text();//Capturo el Nombre del Producto- Texto dentro del Select
            
+            if(sel !=""){
             
             var sptext = text.split("-");
             const datos = sel.split("-");
             
             
             var newtr = '<tr class="item"  data-id="'+sel+'">';
-            newtr = newtr + '<td class="iProduct" ><input type="hidden" id="art_id" name="art_id" value="' + datos[0] + '" required />' + sptext[0] + '</td>';
+            newtr = newtr + '<td class="iProduct" ><input type="hidden" id="art_id" name="art_id" value="' + datos[0] + '" required />' + sptext[1] + '</td>';
             newtr = newtr + '<td>' + datos[2] + '</td>';
-            newtr = newtr + '<td><input  class="form-control" id="cantidad" name="cantidad" value="' + datos[1] + '" max="' + datos[2] + '" required /></td>';
+            newtr = newtr + '<td><input  class="form-control" id="cantidad" name="cantidad" value="' + datos[1] + '" required /></td>';
             newtr = newtr + '<td><input  class="form-control" id="costo" name="costo" value="' + datos[1] + '" required /></td>';
             newtr = newtr + '<td>Parcial</td>';
-            newtr = newtr + '<td><button type="button" class="btn btn-danger btn-sm remove-item"><i class="bi bi-trash-fill"></i></button></td></tr>';
+            newtr = newtr + '<td><button type="submit" class="btn btn-danger btn-sm remove-item"><i class="bi bi-trash-fill"></i></button></td></tr>';
             
             $('#ProSelected').append(newtr); //Agrego el Producto al tbody de la Tabla con el id=ProSelected
             
@@ -68,11 +69,12 @@
            $('.iProduct').off().change(function(e) {
                 RefrescaProducto();
            });
+        }
     }
 </script>
 
                 <div class="card-footer">
-                <from class="form">
+                <form class="form" method="POST" action="{{route('addmv')}}">
                 @csrf
         Movimientos
         <table id="TablaPro" class="table">
@@ -94,9 +96,9 @@
         </table>
 <!--Agregue un boton en caso de desear enviar los productos para ser procesados-->
                 <div class="form-group ">
-                    <button type="submit" id="guardar" name= "guardar" class="btn btn-sm btn-success my-2">Guardar</button>
+                    <button type="submit" class="btn btn-sm btn-success my-2">Guardar</button>
                 </div>
-    </from>
+</form>
 
         <!-- Modal -->
         <div class="card">
@@ -106,17 +108,18 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                                    <label>Producto</label>
+                                <label for="pro_id" class="form-label">Producto</label>
                                 <select class="selectpicker form-control" id="pro_id" name="pro_id" data-width='100%' >
+                                <option value="">Seleccione Producto</option>
                                         @foreach ($arts as $a)
-                                        <option value="{{$a->id}}-{{$a->costo}}-{{$a->stock}}">{{$a->nombre}}-({{$a->stock}})</option>
+                                        <option value="{{$a->id}}-{{$a->costo}}-{{$a->stock}}">{{$a->id}}-{{$a->nombre}}</option>
                                         @endforeach
                                 </select>
                         </div>
                     </div>
                     <div class="card-footer">
                         <!--Uso la funcion onclick para llamar a la funcion en javascript-->
-                        <button type="button" onclick="agregarProducto()" class="btn btn-default btn-sm" data-dismiss="modal">Agregar</button>
+                        <button type="button" onclick="agregarProducto()" class="btn btn-success btn-sm">+</button>
                     </div>
 
         </div>
