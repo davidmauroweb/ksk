@@ -35,3 +35,5 @@ Route::post('/earts', [ArtController::class, 'edit'])->name('earts');
 #Accion
 Route::get('/accshow/{acc}', [AccController::class, 'show'])->name('accshow');
 Route::post('/nacc', [AccController::class, 'store'])->name('nacc');
+#Mov
+Route::post('/addmv', [MovController::class, 'store'])->name('addmv');

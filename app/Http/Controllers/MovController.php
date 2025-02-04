@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\mov;
+use App\Models\{mov,art};
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class MovController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -28,7 +33,8 @@ class MovController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo $request;
+
     }
 
     /**

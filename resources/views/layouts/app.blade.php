@@ -73,21 +73,21 @@
                                                     <div class="modal-body">
                                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                                     <div class="row mb-3">
-                                                    <label for="name" class="col-md-4 col-form-label text-md-end">Clave anterior</label>
+                                                    <label for="clave_o" class="col-md-4 col-form-label text-md-end">Clave anterior</label>
                                                     <div class="col-md-6">
-                                                        <input id="name" type="password" class="form-control" name="o_pw" value="" required autocomplete="name" autofocus>
+                                                        <input id="clave_o" type="password" class="form-control" name="o_pw" value="" required autocomplete="name" autofocus>
                                                     </div>
                                                     </div>
                                                     <div class="row mb-3">
-                                                    <label for="name" class="col-md-4 col-form-label text-md-end">Nueva clave</label>
+                                                    <label for="clave_n" class="col-md-4 col-form-label text-md-end">Nueva clave</label>
                                                     <div class="col-md-6">
-                                                        <input id="name" type="password" class="form-control" name="n_pw" value="" required autocomplete="name" autofocus>
+                                                        <input id="clave_n" type="password" class="form-control" name="n_pw" value="" required autocomplete="name" autofocus>
                                                     </div>
                                                     </div>
                                                     <div class="row mb-3">
-                                                    <label for="name" class="col-md-4 col-form-label text-md-end">Confirmar clave</label>
+                                                    <label for="clave_c" class="col-md-4 col-form-label text-md-end">Confirmar clave</label>
                                                     <div class="col-md-6">
-                                                        <input id="name" type="password" class="form-control" name="c_pw" value="" required autocomplete="name" autofocus>
+                                                        <input id="clave_c" type="password" class="form-control" name="c_pw" value="" required autocomplete="name" autofocus>
                                                     </div>
                                                     </div>
                                                     </div>
@@ -107,7 +107,7 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
                                 <a class="dropdown-item" href="{{route('home')}}">
-                                <i class="bi bi-house-fill"></i> Inicio
+                                <i class="bi bi-house-fill"></i> Movimiento
                                 </a>
 
                                 <a class="dropdown-item" href="{{route('arts')}}">

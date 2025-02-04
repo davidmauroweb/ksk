@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class AccController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -33,15 +37,11 @@ class AccController extends Controller
         $nuevo->fecha = $request->fecha;
         $nuevo->acc = $request->acc;
         $nuevo->obs = $request->obs;
-        if ($request->acc == "Venta" OR $request->acc=="Devolución a Proveedores"){
-            $nuevo->resta = 1;
-        }else{
-            $nuevo->resta = 0;
-        }
         if ($request->acc == "Venta"){
             $nuevo->cli_id = $request->cli_id;
         }
         $nuevo->save();
+
         return redirect()->route('accshow',$nuevo->id);
     }
 
@@ -56,7 +56,8 @@ class AccController extends Controller
             ->orderBy('movs.id')
             ->get();
         $cli=DB::table('clientes')->select('nombre','id')->where('id','=',$acc->cli_id)->first();
-        return view('movs-acc',['movs'=>$movs,'acc'=>$acc,'cli'=>$cli]);
+        $arts=DB::table('art')->select('id','nombre','costo','stock')->orderBy('nombre')->get();
+        return view('movs-acc',['movs'=>$movs,'acc'=>$acc,'cli'=>$cli,'arts'=>$arts]);
     }
 
     /**
