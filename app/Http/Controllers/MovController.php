@@ -33,7 +33,8 @@ class MovController extends Controller
      */
     public function store(Request $request)
     {
-        echo $request;
+        $json = json_decode($request);
+        echo $json;
 
     }
 

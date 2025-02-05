@@ -48,13 +48,7 @@
             const datos = sel.split("-");
             
             
-            var newtr = '<tr class="item"  data-id="'+sel+'">';
-            newtr = newtr + '<td class="iProduct" ><input type="hidden" id="art_id" name="art_id" value="' + datos[0] + '" required />' + sptext[1] + '</td>';
-            newtr = newtr + '<td>' + datos[2] + '</td>';
-            newtr = newtr + '<td><input  class="form-control" id="cantidad" name="cantidad" value="' + datos[1] + '" required /></td>';
-            newtr = newtr + '<td><input  class="form-control" id="costo" name="costo" value="' + datos[1] + '" required /></td>';
-            newtr = newtr + '<td>Parcial</td>';
-            newtr = newtr + '<td><button type="submit" class="btn btn-danger btn-sm remove-item"><i class="bi bi-trash-fill"></i></button></td></tr>';
+            var newtr = '<tr class="item" data-id="'+sel+'"><td class="iProduct" ><input type="hidden" id="acc_id" name="acc_id[]" value="{{$acc->id}}"/><input type="hidden" id="art_id" name="art_id[]" value="' + datos[0] + '"/>' + sptext[1] + '</td><td>' + datos[2] + '</td><td><input type="number" class="form-control" id="cantidad" name="cantidad[]" value="' + datos[1] + '" required /></td><td><input type="number" class="form-control" id="costo" name="costo[]" value="' + datos[1] + '" required /></td><td>Parcial</td><td><button type="submit" class="btn btn-danger btn-sm remove-item"><i class="bi bi-trash-fill"></i></button></td></tr>';
             
             $('#ProSelected').append(newtr); //Agrego el Producto al tbody de la Tabla con el id=ProSelected
             
@@ -70,11 +64,58 @@
                 RefrescaProducto();
            });
         }
+// ARMAR JSON
+        document.getElementById('movimientos').addEventListener('submit', function(event) {  
+            event.preventDefault(); // Evitar que el formulario se envíe normalmente  
+
+            const formData = new FormData(this);  
+    // Añade los datos de la tabla dinámicamente  
+    $('#ProSelected tr.item').each(function() {  
+        const acc_ids = document.querySelectorAll('input[name="acc_id[]"]');
+        const art_ids = document.querySelectorAll('input[name="art_id[]"]');
+        const cantidads = document.querySelectorAll('input[name="cantidad[]"]'); 
+        const costos = document.querySelectorAll('input[name="costo[]"]');
+        
+        formData.append('productos', JSON.stringify({ acc_id, art_id, cantidad, costo }));  
+    });  
+
+  // Crear el JSON de productos
+  let productosArray = [];
+  
+  for (let i = 0; i < acc_ids.length; i++) {
+    productosArray.push({
+      acc_id: parseInt(acc_ids[i].value),
+      art_id: parseInt(art_ids[i].value),
+      cantidad: parseInt(cantidades[i].value),
+      costo: parseFloat(costos[i].value)
+    });  
+  }
+
+    const data = {
+    productos: productosArray
+  };
+
+            // Ahora puedes enviar jsonData como JSON al servidor  
+            fetch('{{route("addmv")}}', {  
+               method: 'POST',  
+                headers: {  
+                    'Content-Type': 'application/json',  
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Importante para proteger contra CSRF  
+                },  
+                body: JSON.stringify(jsonData)  
+            }).then(response => response.json())  
+              .then(data => {  
+                  console.log(data); // Maneja la respuesta del servidor  
+              }).catch(error => {  
+                  console.error('Error:', error);  
+              });  
+        });  
+
     }
 </script>
 
                 <div class="card-footer">
-                <form class="form" method="POST" action="{{route('addmv')}}">
+                <form id="movimientos" class="form">
                 @csrf
         Movimientos
         <table id="TablaPro" class="table">
@@ -96,13 +137,10 @@
         </table>
 <!--Agregue un boton en caso de desear enviar los productos para ser procesados-->
                 <div class="form-group ">
-                    <button type="submit" class="btn btn-sm btn-success my-2">Guardar</button>
+                <input type="submit" value="Guardar" class="btn btn-sm btn-success my-2">
                 </div>
 </form>
-
-        <!-- Modal -->
-        <div class="card">
-
+                <div class="card">
                     <div class="card-header">
                         <div class="modal-title">Agregar producto a la lista</div>
                     </div>
@@ -121,8 +159,7 @@
                         <!--Uso la funcion onclick para llamar a la funcion en javascript-->
                         <button type="button" onclick="agregarProducto()" class="btn btn-success btn-sm">+</button>
                     </div>
-
-        </div>
+                </div>
                 </div>
             </div>
         </div>
