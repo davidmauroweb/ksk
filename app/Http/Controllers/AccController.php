@@ -63,6 +63,23 @@ class AccController extends Controller
         return view('movs-acc',['acc'=>$acc,'cli'=>$cli,'arts'=>$arts]);
     }
 
+    public function xfch($d,$h)
+    {
+
+    }
+    public function xcli($cli_id)
+    {
+        $accs=DB::table('accs')
+        ->select('accs.id','accs.fecha','accs.obs',DB::raw('count(movs.id) as totmovs'))
+        ->leftJoin('movs','movs.acc_id','accs.id')
+        ->where('accs.cli_id','=',$cli_id)
+        ->groupBy('accs.id')
+        ->orderByDesc('accs.id')
+        ->paginate(30);
+        $cli=DB::table('clientes')->select('nombre')->where('id','=',$cli_id)->first();
+        $msj = "Lista de operaciones con ".$cli->nombre;
+        return view('accxcli',['accs'=>$accs,'titulo'=>$msj,'pg'=>$cli_id]);
+    }   
     /**
      * Show the form for editing the specified resource.
      */

@@ -28,7 +28,7 @@
                         <tbody>
                             @foreach ($clientes as $i)
                             <tr>
-                            <th>{{$i->id}}</th>
+                            <th><a href="{{route('xcli',$i->id)}}">{{$i->id}}</a></th>
                             <td>{{$i->nombre}}</td>
                             <td>{{$i->domicilio}}</td>
                             <td>{{$i->cuit}}</td>

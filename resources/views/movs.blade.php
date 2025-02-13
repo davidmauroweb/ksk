@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{$acc->acc}} :: Fecha : {{$acc->fecha}} @if($acc->acc == "Venta") {{$cli->nombre}} @endif
+                <div class="card-header">{{$acc->acc}} :: {{$acc->fecha}} @if($acc->acc == "Venta") {{$cli->nombre}} @endif<br>{{$acc->obs}}
                 </div>
                 <div class="card-body">
                     @if (session('status'))

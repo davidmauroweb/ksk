@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Lista de {{$t}}s
+                <div class="card-header">{{$titulo}}
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -19,9 +19,6 @@
                             <th>#</th>
                             <th>Fecha</th>
                             <th>Items</th>
-                             @if($t == "Venta")
-                            <th>Cliente</th>
-                            @endif
                             <th>Observaciones</th>
                             </tr>
                         </thead>
@@ -31,9 +28,6 @@
                             <th><a href="{{route('lsmovs',$i->id)}}">{{$i->id}}</a></th>
                             <td>{{$i->fecha}}</td>
                             <td>{{$i->totmovs}}</td>
-                            @if($t == "Venta")
-                            <td>{{$i->nombre}}</td>
-                            @endif
                             <td>{{$i->obs}}</td>
                             </tr>
                             @endforeach
@@ -41,7 +35,7 @@
                     </table>
                 </div>
                 <div class="card-footer">
-                <div class="mx-3"><ul class="pagination">{{ $accs->appends(['acc' => $t])->links() }}</ul></div>
+                <div class="mx-3"><ul class="pagination">{{ $accs->appends(['acc' => $pg])->links() }}</ul></div>
                 </div>
             </div>
         </div>

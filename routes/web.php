@@ -36,6 +36,8 @@ Route::post('/earts', [ArtController::class, 'edit'])->name('earts');
 Route::get('/accshow/{acc}', [AccController::class, 'show'])->name('accshow');
 Route::get('/lsacc/{acc}', [AccController::class, 'index'])->name('lsacc');
 Route::post('/nacc', [AccController::class, 'store'])->name('nacc');
+Route::get('/xcli/{cli_id}', [AccController::class, 'xcli'])->name('xcli');
+
 #Mov
 Route::post('/addmv', [MovController::class, 'store'])->name('addmv');
 Route::get('/lsmovs/{acc}', [MovController::class, 'show'])->name('lsmovs');
