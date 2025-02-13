@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Gestión de Categorías
+                <div class="card-header">Lista de {{$t}}s
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -26,7 +26,7 @@
                         <tbody>
                             @foreach ($accs as $i)
                             <tr>
-                            <th>{{$i->id}}</th>
+                            <th><a href="{{route('lsmovs',$i->id)}}">{{$i->id}}</a></th>
                             <td>{{$i->fecha}}</td>
                             <td>{{$i->totmovs}}</td>
                             <td>{{$i->nombre}}</td>

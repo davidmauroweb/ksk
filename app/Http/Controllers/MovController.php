@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{mov,art};
+use App\Models\{mov,art,acc};
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -92,9 +92,15 @@ class MovController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(mov $mov)
+    public function show(acc $acc)
     {
-        //
+        $cli = DB::table('clientes')->select('nombre')->where('id','=',$acc->cli_id)->first();
+        $movs = DB::table('movs')
+        ->select('art.nombre','movs.cantidad','movs.costo','movs.venta')
+        ->join('art','movs.art_id','art.id')
+        ->where('movs.acc_id','=',$acc->id)
+        ->get();
+        return view('movs',['acc'=>$acc,'cli'=>$cli,'movs'=>$movs]);
     }
 
     /**

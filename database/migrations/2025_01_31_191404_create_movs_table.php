@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedMediumInteger('costo');
             $table->unsignedMediumInteger('venta')->nullable();
             $table->foreignId('acc_id');
-            $table->tinyText('obs')->nullable();
             $table->timestamps();
         });
     }

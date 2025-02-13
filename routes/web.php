@@ -38,3 +38,4 @@ Route::get('/lsacc/{acc}', [AccController::class, 'index'])->name('lsacc');
 Route::post('/nacc', [AccController::class, 'store'])->name('nacc');
 #Mov
 Route::post('/addmv', [MovController::class, 'store'])->name('addmv');
+Route::get('/lsmovs/{acc}', [MovController::class, 'show'])->name('lsmovs');

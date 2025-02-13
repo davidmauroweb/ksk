@@ -24,8 +24,8 @@ class AccController extends Controller
         ->where('accs.acc','=',$acc)
         ->groupBy('accs.id')
         ->orderByDesc('accs.id')
-        ->get();
-        return view('acc',['accs'=>$accs]);
+        ->paginate(30);
+        return view('acc',['accs'=>$accs,'t'=>$acc]);
     }
 
     /**
