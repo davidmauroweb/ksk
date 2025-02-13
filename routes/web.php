@@ -34,6 +34,7 @@ Route::post('/darts', [ArtController::class, 'destroy'])->name('darts');
 Route::post('/earts', [ArtController::class, 'edit'])->name('earts');
 #Accion
 Route::get('/accshow/{acc}', [AccController::class, 'show'])->name('accshow');
+Route::get('/lsacc/{acc}', [AccController::class, 'index'])->name('lsacc');
 Route::post('/nacc', [AccController::class, 'store'])->name('nacc');
 #Mov
 Route::post('/addmv', [MovController::class, 'store'])->name('addmv');

@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<script>  
+function cli() {  
+    var ac = document.getElementById("acc");  
+    var cl = document.getElementById("cli_id");  
+    if (ac.value === "Compra") {  
+        cl.disabled = true; // Desactivar el campo "cli"
+        cl.vlue = "";
+    } else {  
+        cl.disabled = false; // Activar el campo "cli"  
+    }  
+}  
+</script>  
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -22,14 +34,14 @@
                     </div>
                     <div class="col-4">
                         <label for="acc">Movimiento</label>
-                        <select name="acc" id='acc' class="form-select">
+                        <select name="acc" id='acc' class="form-select" onchange="cli()">
                             <option value="Venta">Venta</option>
                             <option value="Compra">Compra</option>
                         </select>
                     </div>
                     <div class="col-4">
                         <label for="cli">Cliente</label>
-                        <select name="cli_id" id='cli' class="form-select">
+                        <select name="cli_id" id='cli_id' class="form-select">
                             @foreach ($cli as $c)
                             <option value="{{$c->id}}">{{$c->nombre}}</option>
                             @endforeach

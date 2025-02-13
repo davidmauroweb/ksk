@@ -114,6 +114,14 @@
                                 <i class="bi bi-bag-fill"></i> Articulos
                                 </a>
 
+                                <a class="dropdown-item" href="{{route('lsacc','Compra')}}">
+                                <i class="bi bi-box-arrow-in-down-right"></i> Compras
+                                </a>
+
+                                <a class="dropdown-item" href="{{route('lsacc','Venta')}}">
+                                <i class="bi bi-box-arrow-up-right"></i> Ventas
+                                </a>
+
                                 <a class="dropdown-item" href="{{route('cat')}}">
                                 <i class="bi bi-calendar2"></i> Categorias
                                 </a>

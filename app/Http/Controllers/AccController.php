@@ -15,9 +15,17 @@ class AccController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($acc)
     {
-        //
+        $accs=DB::table('accs')
+        ->select('accs.id','accs.fecha','accs.obs','clientes.nombre',DB::raw('count(movs.id) as totmovs'))
+        ->leftJoin('clientes','clientes.id','accs.cli_id')
+        ->leftJoin('movs','movs.acc_id','accs.id')
+        ->where('accs.acc','=',$acc)
+        ->groupBy('accs.id')
+        ->orderByDesc('accs.id')
+        ->get();
+        return view('acc',['accs'=>$accs]);
     }
 
     /**
@@ -50,14 +58,9 @@ class AccController extends Controller
      */
     public function show(acc $acc)
     {
-        $movs=DB::table('movs')
-            ->join('art','movs.art_id','art.id')
-            ->where('movs.acc_id','=',$acc->id)
-            ->orderBy('movs.id')
-            ->get();
         $cli=DB::table('clientes')->select('nombre','id')->where('id','=',$acc->cli_id)->first();
-        $arts=DB::table('art')->select('id','nombre','costo','stock')->orderBy('nombre')->get();
-        return view('movs-acc',['movs'=>$movs,'acc'=>$acc,'cli'=>$cli,'arts'=>$arts]);
+        $arts=DB::table('art')->select('id','nombre','costo','stock','venta')->orderBy('nombre')->get();
+        return view('movs-acc',['acc'=>$acc,'cli'=>$cli,'arts'=>$arts]);
     }
 
     /**
