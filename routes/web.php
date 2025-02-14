@@ -37,6 +37,7 @@ Route::get('/accshow/{acc}', [AccController::class, 'show'])->name('accshow');
 Route::get('/lsacc/{acc}', [AccController::class, 'index'])->name('lsacc');
 Route::post('/nacc', [AccController::class, 'store'])->name('nacc');
 Route::get('/xcli/{cli_id}', [AccController::class, 'xcli'])->name('xcli');
+Route::post('/accdel',[AccController::class, 'destroy'])->name('accdel');
 
 #Mov
 Route::post('/addmv', [MovController::class, 'store'])->name('addmv');

@@ -17,6 +17,7 @@
                         <thead>
                             <tr>
                             <th>#</th>
+                            <th></th>
                             <th>Fecha</th>
                             <th>Items</th>
                              @if($t == "Venta")
@@ -29,6 +30,16 @@
                             @foreach ($accs as $i)
                             <tr>
                             <th><a href="{{route('lsmovs',$i->id)}}">{{$i->id}}</a></th>
+
+                            <td>@if($i->totmovs==0)
+                                <form action="{{route('accdel')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="acc_id" value="{{$i->id}}">
+                                    <input type="hidden" name="t" value="{{$t}}">
+                                    <button type="submit" class="btn btn-danger btn-sm" disable><i class="bi bi-trash-fill"></i></button>
+                                </form>
+                                @endif
+                            </td>
                             <td>{{$i->fecha}}</td>
                             <td>{{$i->totmovs}}</td>
                             @if($t == "Venta")

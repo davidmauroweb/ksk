@@ -65,7 +65,7 @@
                         </div>
                     @endif
                     <table class="table table-sm">
-
+                    <div class="row align-items-center"><div class="col-7"></div><div class="col-1  text-end">Total:</div><div class="col-4"> <input type="number" id="elTotal" name="elTotal" class="form-control" readonly></div></div>
                     </table>
                 </div>
                 <div class="card-footer">
@@ -102,7 +102,7 @@
                 </tr>';
             }@endphp
             </tbody>
-        </table><input type="number" id="elTotal" name="elTotal" class="form-control" readonly>
+        </table>
                 <div class="form-group ">
                 <input type="submit" value="Guardar" class="btn btn-sm btn-success my-2">
                 </div>

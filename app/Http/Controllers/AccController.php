@@ -99,8 +99,10 @@ class AccController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(acc $acc)
+    public function destroy(Request $request)
     {
-        //
+        $del = acc::find($request->acc_id);
+        $del->delete();
+        return redirect()->route('lsacc',$request->t);
     }
 }
