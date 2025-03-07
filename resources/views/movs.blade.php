@@ -18,11 +18,11 @@
                             <tr>
                                 <th>Artículo</th>
                                 <th>Cantidad</th>
-                                <th>Costo U.</th>
-                                <th>Costot Total</th>
+                                <th>Cs.</th>
+                                <th>Cs. T.</th>
                             @if($acc->acc == "Venta")
-                                <th>Venta U.</th>
-                                <th>Venta Total</th>
+                                <th>Vta.</th>
+                                <th>Vta. Tot.</th>
                                 <th>Dif</th>
                             @endif
                             </tr>

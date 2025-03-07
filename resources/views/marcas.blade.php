@@ -21,6 +21,7 @@
                             <th>Cantidad</th>
                             <th></th>
                             <th></th>
+                            <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,6 +30,7 @@
                             <th>{{$i->id}}</th>
                             <td>{{$i->nombre}}</td>
                             <td>{{$i->total}}</td>
+                            <td><a href="{{route ('arts', ['m', $i->id])}}"><button class="btn btn-sm btn-success" title="Arts. de {{$i->nombre}}"><i class="bi bi-list-columns-reverse"></i></button></a></td>
                             <td>
                             <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit{{$i->id}}"><i class="bi bi-pencil-square"></i></button>
                                         <!-- ModalEdit -->

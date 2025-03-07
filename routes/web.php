@@ -28,7 +28,7 @@ Route::post('/nclientes', [ClienteController::class, 'store'])->name('nclientes'
 Route::post('/dclientes', [ClienteController::class, 'destroy'])->name('dclientes');
 Route::post('/eclientes', [ClienteController::class, 'edit'])->name('eclientes');
 #Art
-Route::get('/arts', [ArtController::class, 'index'])->name('arts');
+Route::get('/arts/{b?}/{i?}', [ArtController::class, 'index'])->name('arts');
 Route::post('/narts', [ArtController::class, 'store'])->name('narts');
 Route::post('/darts', [ArtController::class, 'destroy'])->name('darts');
 Route::post('/earts', [ArtController::class, 'edit'])->name('earts');

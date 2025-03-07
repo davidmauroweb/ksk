@@ -54,7 +54,7 @@ function cli() {
                         <input type="text" id="obs" name="obs" max="250" class="form-control">
                     </div>
                     <div class="col-3 align-middle align-self-end">
-                        <button class="btn btn-sm btn-success col-12">Nuevo Movimiento</button>
+                        <button class="btn btn-sm btn-success col-12">Crear Movimiento</button>
                     </div>
                     </div>
                     </form>
