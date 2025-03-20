@@ -23,7 +23,7 @@ class ArtController extends Controller
                 ->join('categorias', 'art.cat_id', '=', 'categorias.id')
                 ->join('marcas','art.marca_id','=','marcas.id')
                 ->where('art.cat_id','=',$r->i)
-                ->select('art.id','art.nombre','categorias.nombre as cat_n','categorias.id as cat_id','marcas.nombre as marca_n','marcas.id as marca_id','art.stock','art.costo','art.venta','art.repo')
+                ->select('art.id','art.code','art.nombre','categorias.nombre as cat_n','categorias.id as cat_id','marcas.nombre as marca_n','marcas.id as marca_id','art.stock','art.costo','art.venta','art.repo')
                 ->orderBy('art.nombre')
                 ->get();
             }else{
@@ -31,7 +31,7 @@ class ArtController extends Controller
                 ->join('categorias', 'art.cat_id', '=', 'categorias.id')
                 ->join('marcas','art.marca_id','=','marcas.id')
                 ->where('art.marca_id','=',$r->i)
-                ->select('art.id','art.nombre','categorias.nombre as cat_n','categorias.id as cat_id','marcas.nombre as marca_n','marcas.id as marca_id','art.stock','art.costo','art.venta','art.repo')
+                ->select('art.id','art.code','art.nombre','categorias.nombre as cat_n','categorias.id as cat_id','marcas.nombre as marca_n','marcas.id as marca_id','art.stock','art.costo','art.venta','art.repo')
                 ->orderBy('art.nombre')
                 ->get();
             }
@@ -39,7 +39,7 @@ class ArtController extends Controller
             $arts=DB::table('art')
             ->join('categorias', 'art.cat_id', '=', 'categorias.id')
             ->join('marcas','art.marca_id','=','marcas.id')
-            ->select('art.id','art.nombre','categorias.nombre as cat_n','categorias.id as cat_id','marcas.nombre as marca_n','marcas.id as marca_id','art.stock','art.costo','art.venta','art.repo')
+            ->select('art.id','art.code','art.nombre','categorias.nombre as cat_n','categorias.id as cat_id','marcas.nombre as marca_n','marcas.id as marca_id','art.stock','art.costo','art.venta','art.repo')
             ->orderBy('art.nombre')
             ->get();
         }
@@ -63,6 +63,7 @@ class ArtController extends Controller
     {
         $Ingreso = new art();
         $Ingreso->nombre = $request->nombre;
+        $Ingreso->code = $request->code;
         $Ingreso->cat_id = $request->cat_id;
         $Ingreso->marca_id = $request->marca_id;
         $Ingreso->stock = 0;
@@ -86,10 +87,11 @@ class ArtController extends Controller
     {
         $edit=art::find($request->art_id);
         $edit->nombre = $request->nombre;
+        $edit->code = $request->code;
         $edit->cat_id = $request->cat_id;
         $edit->marca_id = $request->marca_id;
-        $edit->precio = $request->precio;
-
+        $edit->costo = $request->cost;
+        $edit->venta = $request->venta;
         $edit->save();
         return redirect()->route('arts')->with('alert', $request->nombre.' Editado')->with('color','success');
     }

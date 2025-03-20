@@ -59,7 +59,7 @@ class AccController extends Controller
     public function show(acc $acc)
     {
         $cli=DB::table('clientes')->select('nombre','id')->where('id','=',$acc->cli_id)->first();
-        $arts=DB::table('art')->select('id','nombre','costo','stock','venta')->orderBy('nombre')->get();
+        $arts=DB::table('art')->select('id','code','nombre','costo','stock','venta')->orderBy('nombre')->get();
         return view('movs-acc',['acc'=>$acc,'cli'=>$cli,'arts'=>$arts]);
     }
 

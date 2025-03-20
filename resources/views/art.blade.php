@@ -60,6 +60,12 @@
                                                     </div>
                                                     </div>
                                                     <div class="row mb-3">
+                                                    <label for="code" class="col-md-4 col-form-label text-md-end">{{ __('Código') }}</label>
+                                                    <div class="col-md-6">
+                                                        <input id="code" type="text" class="form-control" name="code" value="{{$i->code}}" required autocomplete="code" autofocus>
+                                                    </div>
+                                                    </div>
+                                                    <div class="row mb-3">
                                                     <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Categoría') }}</label>
                                                     <div class="col-md-6">
                                                     <select class="form-select" aria-label="Default select example" name="cat_id">
@@ -82,14 +88,14 @@
                                                     <div class="row mb-3">
                                                     <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('costo') }}</label>
                                                     <div class="col-md-6">
-                                                        <input id="name" type="text" class="form-control" name="costo" value="{{$i->costo}}" required autocomplete="name" autofocus pattern="^\d*(\.\d{0,2})?$">
+                                                        <input id="name" type="text" class="form-control" name="costo" value="{{$i->costo}}" autocomplete="name" autofocus pattern="^\d*(\.\d{0,2})?$">
                                                     </div>
                                                     <div class="col-md-1 text-secondary col-form-label">*</div>
                                                     </div>
                                                     <div class="row mb-3">
                                                     <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Venta') }}</label>
                                                     <div class="col-md-6">
-                                                        <input id="name" type="text" class="form-control" name="venta" value="{{$i->venta}}" required autocomplete="name" autofocus pattern="^\d*(\.\d{0,2})?$">
+                                                        <input id="name" type="text" class="form-control" name="venta" value="{{$i->venta}}" autocomplete="name" autofocus pattern="^\d*(\.\d{0,2})?$">
                                                     </div>
                                                     <div class="col-md-1 text-secondary col-form-label">*</div>
                                                     </div>
@@ -114,7 +120,7 @@
                                 <form action="{{route('darts')}}" method="post">
                                     @csrf
                                     <input type="hidden" name="cat_id" value="{{$i->id}}">
-                                    <button type="submit" class="btn btn-danger btn-sm" disable><i class="bi bi-trash-fill"></i></button>
+                                    <button type="submit" class="btn btn-danger btn-sm" @if($i->stock != 0) disabled @endif><i class="bi bi-trash-fill"></i></button>
                                 </form>
                             </td>
                             </tr>
@@ -141,6 +147,14 @@
                                                         <input id="name" type="text" class="form-control" name="nombre" value="" required autocomplete="name" autofocus>
                                                     </div>
                                                     </div>
+
+                                                    <div class="row mb-3">
+                                                    <label for="code" class="col-md-4 col-form-label text-md-end">{{ __('Código') }}</label>
+                                                    <div class="col-md-6">
+                                                        <input id="code" type="text" class="form-control" name="code" value="" required autocomplete="code" autofocus>
+                                                    </div>
+                                                    </div>
+
                                                     <div class="row mb-3">
                                                     <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Categoría') }}</label>
                                                     <div class="col-md-6">

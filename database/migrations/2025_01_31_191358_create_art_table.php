@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('art', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->string('nombre',50);
+            $table->string('code',20)->unique();
             $table->unsignedTinyInteger('cat_id')->constrained();
             $table->unsignedSmallInteger('marca_id')->constrained();
-            $table->mediumInteger('stock')->nullable();
-            $table->decimal('costo', total: 8, places: 2)->nullable();
-            $table->decimal('venta', total: 8, places: 2)->nullable();
-            $table->smallInteger('repo');
+            $table->mediumInteger('stock')->nullable()->default(0);
+            $table->decimal('costo', total: 8, places: 2)->default(0);
+            $table->decimal('venta', total: 8, places: 2)->default(0);
+            $table->unsignedSmallInteger('repo');
             $table->timestamps();
             $table->foreign('cat_id')->references('id')->on('categorias');
             $table->foreign('marca_id')->references('id')->on('marcas');

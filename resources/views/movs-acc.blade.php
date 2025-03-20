@@ -91,7 +91,7 @@
                     <select class="selectpicker form-control" id="pro_id'.$x.'" name="pro_id'.$x.'" onchange="act('.$x.')">
                     <option value="">Seleccione Producto</option>';@endphp
                             @foreach ($arts as $a)
-                            <option value="{{$a->id}}xyz{{$a->costo}}xyz{{$a->stock}}xyz{{$a->venta}}">{{$a->id}}-{{$a->nombre}}</option>
+                            <option value="{{$a->id}}xyz{{$a->costo}}xyz{{$a->stock}}xyz{{$a->venta}}">{{$a->code}}-{{$a->nombre}}</option>
                             @endforeach
                             @php echo'
                     </select>
