@@ -17,6 +17,7 @@
                         <thead>
                             <tr>
                             <th>#</th>
+                            <th>Codigo</th>
                             <th>Nombre</th>
                             <th>Categoria</th>
                             <th>Marca</th>
@@ -32,6 +33,7 @@
                             @foreach ($arts as $i)
                             <tr>
                             <th>{{$i->id}}</th>
+                            <td>{{$i->code}}</td>
                             <td>{{$i->nombre}}</td>
                             <td>{{$i->cat_n}}</td>
                             <td>{{$i->marca_n}}</td>

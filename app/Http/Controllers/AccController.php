@@ -46,11 +46,13 @@ class AccController extends Controller
         $nuevo->acc = $request->acc;
         $nuevo->obs = $request->obs;
         if ($request->acc == "Venta"){
-            $nuevo->cli_id = $request->cli_id;
+            $cli=DB::table('clientes')->select('nombre','id')->where('id','=',$request->cli_id)->first();
+        }else{
+            $cli->nombre = "";
+            $cli->id=0;
         }
-        $nuevo->save();
-
-        return redirect()->route('accshow',$nuevo->id);
+        $arts=DB::table('art')->select('id','code','nombre','costo','stock','venta')->orderBy('nombre')->get();
+        return view('movs-acc',['acc'=>$nuevo,'cli'=>$cli,'arts'=>$arts]);
     }
 
     /**
@@ -58,9 +60,9 @@ class AccController extends Controller
      */
     public function show(acc $acc)
     {
-        $cli=DB::table('clientes')->select('nombre','id')->where('id','=',$acc->cli_id)->first();
-        $arts=DB::table('art')->select('id','code','nombre','costo','stock','venta')->orderBy('nombre')->get();
-        return view('movs-acc',['acc'=>$acc,'cli'=>$cli,'arts'=>$arts]);
+        
+        
+        
     }
 
     public function xfch($d,$h)

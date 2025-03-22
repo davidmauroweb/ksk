@@ -23,8 +23,21 @@ class HomeController extends Controller
     {
         $cli=DB::table('clientes')->select('id','nombre')->orderBy('nombre')->get();
         $al=DB::table('art')->select('nombre','stock')->whereRaw('stock < repo')->get();
-        return view('home',['cli'=>$cli, 'al'=>$al]);
+        $arts=DB::table('art')->select('id','code','nombre','costo','stock','venta')->get();
+        foreach ($arts as $a){
+            $prod [] = [
+                'id'=> $a->id,
+                'nombre'=> $a->nombre,
+                'code' => $a->code,
+                'stock' => $a->stock,
+                'costo' => $a->costo,
+                'venta' => $a->venta,
+                'total' => $a->stock*$a->venta
+            ];
+        }
+        return view('home',['cli'=>$cli, 'al'=>$al],compact('prod'));
     }
+
     public function pw(Request $request)
     {
         $pw=User::find($request->user_id);

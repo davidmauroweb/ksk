@@ -30,7 +30,7 @@ class MovController extends Controller
      */
     public function store(Request $request)
     {
-        //tomo valores desde movs-acc.blade.php
+        /*/tomo valores desde movs-acc.blade.php
         //{0}id|{1}costo|{2}stock|{3}venta|{4}cant|{5}precio
     $movs = $request->pro_id0."xyz".$request->cant_0."xyz".$request->precio_0."//";
     $movs .= $request->pro_id1."xyz".$request->cant_1."xyz".$request->precio_1."//";
@@ -87,6 +87,18 @@ class MovController extends Controller
         $color="success";
     }
     return redirect()->route('home')->with('alert',$msj)->with('color',$color);
+    fecha":"2025-03-22","acc":"Venta","idCliente":"1","obs":"","productos"
+*/
+echo $request->input('fecha');
+echo $request->input('acc');
+echo $request->input('idCliente');
+echo $request->input('obs');
+$ps =  $request->input('productos');
+echo "---";
+foreach ($ps as $m)
+{
+    echo $m['id'];
+}
     }
 
     /**
