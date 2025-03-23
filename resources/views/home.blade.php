@@ -115,14 +115,12 @@ function enviarDatos() {
                 contentType: "application/json",
                 data: JSON.stringify(datos),
                 cache: false,
-                success: function(response) {
-                    if (response.success && response.refresh) {  
-                        alert(response.message);   
-                        location.reload();  
-                    } else { 
-                        alert(response.message);  
-                    }
-                    },
+                success: function(response){
+                location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) { 
+                location.reload();
+                }
             });
         }
 </script>  
@@ -151,7 +149,7 @@ function enviarDatos() {
                         </select>
                     </div>
                     <div class="col-4">
-                        <label for="cli">Cliente</label>
+                        <label for="cli_id">Cliente</label>
                         <select name="cli_id" id='cli_id' class="form-select">
                             @foreach ($cli as $c)
                             <option value="{{$c->id}}">{{$c->nombre}}</option>
@@ -187,7 +185,7 @@ function enviarDatos() {
                     <th class="d-none"></th>
                     <th>Código</th>
                     <th>Detalle</th>
-                    <th>Precio</th>
+                    <th>$</th>
                     <th>Cantidad</th>
                     <th>Sub.</th>
                     <th>Acción</th>

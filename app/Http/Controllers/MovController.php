@@ -88,12 +88,8 @@ if ($acc == "Venta"){
 
     }
 }
-return response()->json([  
-    'success' => true,  
-    'message' => $msj,  
-    'refresh' => true // Indicamos que se necesita un refresh  
-]);
-//return redirect()->route('home')->with('alert',$msj)->with('color',$color);
+return response()->json(['msj' => $msj, 'color' => $color]);
+
 }
     /**
      * Display the specified resource.

@@ -92,6 +92,7 @@ class ArtController extends Controller
         $edit->marca_id = $request->marca_id;
         $edit->costo = $request->costo;
         $edit->venta = $request->venta;
+        $edit->repo = $request->repo;
         $edit->save();
         return redirect()->route('arts')->with('alert', $request->nombre.' Editado')->with('color','success');
     }
