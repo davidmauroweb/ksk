@@ -11,7 +11,6 @@ function cli() {
     var cl = document.getElementById("cli_id");  
     if (ac.value === "Compra") {  
         cl.disabled = true; // Desactivar el campo "cli"
-        cl.vlue = 0;
     } else {  
         cl.disabled = false; // Activar el campo "cli"  
     }
@@ -116,8 +115,13 @@ function enviarDatos() {
                 contentType: "application/json",
                 data: JSON.stringify(datos),
                 cache: false,
-                success: function(datos) {
-                    console.log(datos);
+                success: function(response) {
+                    if (response.success && response.refresh) {  
+                        alert(response.message);   
+                        location.reload();  
+                    } else { 
+                        alert(response.message);  
+                    }
                     },
             });
         }

@@ -30,77 +30,71 @@ class MovController extends Controller
      */
     public function store(Request $request)
     {
-        /*/tomo valores desde movs-acc.blade.php
-        //{0}id|{1}costo|{2}stock|{3}venta|{4}cant|{5}precio
-    $movs = $request->pro_id0."xyz".$request->cant_0."xyz".$request->precio_0."//";
-    $movs .= $request->pro_id1."xyz".$request->cant_1."xyz".$request->precio_1."//";
-    $movs .= $request->pro_id2."xyz".$request->cant_2."xyz".$request->precio_2."//";
-    $movs .= $request->pro_id3."xyz".$request->cant_3."xyz".$request->precio_3."//";
-    $movs .= $request->pro_id4."xyz".$request->cant_4."xyz".$request->precio_4."//";
-    $movs .= $request->pro_id5."xyz".$request->cant_5."xyz".$request->precio_5."//";
-    $movs .= $request->pro_id6."xyz".$request->cant_6."xyz".$request->precio_6."//";
-    $movs .= $request->pro_id7."xyz".$request->cant_7."xyz".$request->precio_7."//";
-    $movs .= $request->pro_id8."xyz".$request->cant_8."xyz".$request->precio_8."//";
-    $movs .= $request->pro_id9."xyz".$request->cant_9."xyz".$request->precio_9;
-    $mv=explode("//",$movs,);
-    $acc = DB::table('accs')->where('id','=',$request->acc)->first();
-    if ($acc->acc == "Compra"){
-        foreach($mv as $m){
-            $campo=explode("xyz",$m);
-            if($campo[0]!=""){
-                $nstock=$campo[2]+$campo[4];
-                $nmov = new mov();
-                $nmov->art_id = $campo[0];
-                $nmov->cantidad = $campo[4];
-                $nmov->costo = $campo[5];
-                $nmov->acc_id = $acc->id;
-                $nmov->save();
-                $nstock=$campo[2]+$campo[4];
-                $uart=art::find($campo[0]);
-                $uart->stock=$nstock;
-                $ncosto = (($campo[1]*$campo[2])+($campo[4]*$campo[5]))/$nstock;
-                $uart->costo=$ncosto;
-                $uart->save();
-                }
-            }
-            $msj="Compra Registrada";
-            $color="success";
-    }else{
-        foreach($mv as $m){
-            $campo=explode("xyz",$m);
-            if($campo[0]!=""){
-                $nmov = new mov();
-                $nmov->art_id = $campo[0];
-                $nmov->cantidad = $campo[4];
-                $nmov->costo = $campo[1];
-                $nmov->venta = $campo[5];
-                $nmov->acc_id = $acc->id;
-                $nmov->save();
-                $nstock=$campo[2]-$campo[4];
-                $uart=art::find($campo[0]);
-                $uart->stock=$nstock;
-                $uart->venta=$campo[5];
-                $uart->save();
-            }
-        }
-        $msj="Venta Registrada";
-        $color="success";
-    }
+    /*
     return redirect()->route('home')->with('alert',$msj)->with('color',$color);
-    fecha":"2025-03-22","acc":"Venta","idCliente":"1","obs":"","productos"
-*/
-echo $request->input('fecha');
-echo $request->input('acc');
-echo $request->input('idCliente');
-echo $request->input('obs');
-$ps =  $request->input('productos');
-echo "---";
-foreach ($ps as $m)
-{
-    echo $m['id'];
-}
+    */
+    $fecha = $request->input('fecha');
+    $acc = $request->input('acc');
+    $idCliente = $request->input('idCliente');
+    $obs = $request->input('obs');
+    $ps =  $request->input('productos');
+    // Genero el movimiento Venta o Compra en acc
+    $nuevo = new acc();
+    $nuevo->fecha = $fecha;
+    $nuevo->acc = $acc;
+    $nuevo->obs = $obs;
+if ($acc == "Venta"){
+        $nuevo->cli_id = $idCliente;
+    }else{
+        $nuevo->cli_id = 0;
     }
+$nuevo->save();
+// Registro los movimientos de cada producto en mov
+var_dump($ps);
+if ($acc == "Venta"){
 
+    foreach($ps as $m){
+        $newmov = new mov;
+        $newmov->art_id = $m["id"];
+        $newmov->cantidad = $m["q"];
+        $newmov->venta = $m["precio"];
+        $newmov->costo = $m["costo"];
+        $newmov->acc_id = $nuevo->id;
+        $newmov->save();
+        $uart=art::find($m["id"]);
+        $uart->stock = $m["sth"]-$m["q"];
+        $uart->venta = $m["precio"];
+        $uart->save();
+    }
+        $msj="Compra Registrada";
+        $color="success";
+        
+}else{
+    foreach($ps as $m){
+    $ncosto = (($m["sth"]*$m["costo"])+($m["q"]*$m["precio"]))/($m["sth"]+$m["q"]);
+    $newmov = new mov;
+    $newmov->art_id = $m["id"];
+    $newmov->cantidad = $m["q"];
+    $newmov->costo = $m["precio"];
+    $newmov->acc_id = $nuevo->id;
+    $newmov->save();
+    $uart=art::find($m["id"]);
+    $uart->stock = $m["sth"]+$m["q"];
+    $uart->costo = $ncosto;
+    $uart->save();
+
+    $msj="Compra Registrada";
+    $color="success";
+
+    }
+}
+return response()->json([  
+    'success' => true,  
+    'message' => $msj,  
+    'refresh' => true // Indicamos que se necesita un refresh  
+]);
+//return redirect()->route('home')->with('alert',$msj)->with('color',$color);
+}
     /**
      * Display the specified resource.
      */
