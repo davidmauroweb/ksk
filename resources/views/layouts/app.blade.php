@@ -164,11 +164,6 @@ $(document).ready(function(){
 });
 </script>
 @endif
-
-
-                                        
-
-
         <main class="py-4">
             @yield('content')
         </main>
