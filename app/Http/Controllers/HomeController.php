@@ -24,16 +24,29 @@ class HomeController extends Controller
         $cli=DB::table('clientes')->select('id','nombre')->orderBy('nombre')->get();
         $al=DB::table('art')->select('nombre','stock')->whereRaw('stock < repo')->get();
         $arts=DB::table('art')->select('id','code','nombre','costo','stock','venta')->get();
-        foreach ($arts as $a){
-            $prod [] = [
-                'id'=> $a->id,
-                'nombre'=> $a->nombre,
-                'code' => $a->code,
-                'stock' => $a->stock,
-                'costo' => $a->costo,
-                'venta' => $a->venta,
-                'total' => $a->stock*$a->venta
-            ];
+        if ($arts == "[]")
+        {
+                $prod [] = [
+                    'id'=> "0",
+                    'nombre'=> "n/a",
+                    'code' => "n/a",
+                    'stock' => "n/a",
+                    'costo' => "n/a",
+                    'venta' => "n/a",
+                    'total' => "n/a"
+                ];
+        }else{
+            foreach ($arts as $a){
+                $prod [] = [
+                    'id'=> $a->id,
+                    'nombre'=> $a->nombre,
+                    'code' => $a->code,
+                    'stock' => $a->stock,
+                    'costo' => $a->costo,
+                    'venta' => $a->venta,
+                    'total' => $a->stock*$a->venta
+                ];
+            }
         }
         return view('home',['cli'=>$cli, 'al'=>$al],compact('prod'));
     }

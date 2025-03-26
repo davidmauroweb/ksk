@@ -19,6 +19,15 @@ function cli() {
     total();
 }
 
+function smov(tot){
+    var cl = document.getElementById("sendMov");  
+    if (tot === 0) {  
+        cl.disabled = true; // Desactivar el campo "cli"
+    } else {  
+        cl.disabled = false; // Activar el campo "cli"  
+    }
+}
+
 function buscarProducto() {
             const codigo = $("#codigo-p").val().trim();
             const producto = productos.find(p => p.code === codigo);
@@ -72,7 +81,8 @@ function total() {
 
     // Muestra el total general en un lugar adecuado  
     // Asegúrate de tener un elemento para mostrar el total, por ejemplo, una celda en la tabla o un párrafo  
-    $("#totalGeneral").text(totalGeneral.toFixed(2)); // Actualiza el total  
+    $("#totalGeneral").text(totalGeneral.toFixed(2)); // Actualiza el total
+    smov(totalGeneral);
 } 
 
 function eliminarFila(btn) {
@@ -116,9 +126,11 @@ function enviarDatos() {
                 data: JSON.stringify(datos),
                 cache: false,
                 success: function(response){
+                alert("Operación E1");
                 location.reload();
                 },
                 error: function(jqXHR, textStatus, errorThrown) { 
+                alert("Operación E1");
                 location.reload();
                 }
             });
@@ -163,7 +175,7 @@ function enviarDatos() {
                         <input type="text" id="obs" name="obs" max="250" class="form-control">
                     </div>
                     <div class="col-3 align-middle align-self-end">
-                        <button class="btn btn-sm btn-success col-12" onclick="enviarDatos()">Crear Movimiento</button>
+                        <button class="btn btn-sm btn-success col-12" id="sendMov" onclick="enviarDatos()" disabled>Crear Movimiento</button>
                     </div>
                     </div>
                     <div class="row my-2">                   
