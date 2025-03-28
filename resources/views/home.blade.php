@@ -22,9 +22,9 @@ function cli() {
 function smov(tot){
     var cl = document.getElementById("sendMov");  
     if (tot === 0) {  
-        cl.disabled = true; // Desactivar el campo "cli"
+        cl.disabled = true; // Desactivar el botón de envío
     } else {  
-        cl.disabled = false; // Activar el campo "cli"  
+        cl.disabled = false; // Activar el botón de envío
     }
 }
 

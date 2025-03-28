@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12 col-12">
             <div class="card">
-                <div class="card-header">Lista de {{$t}}s
+                <div class="card-header text-center">Lista de {{$t}}s
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -13,6 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="table-responsive"> 
                     <table class="table table-sm">
                         <thead>
                             <tr>
@@ -50,6 +51,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
                 <div class="card-footer">
                 <div class="mx-3"><ul class="pagination">{{ $accs->appends(['acc' => $t])->links() }}</ul></div>

@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12 col-12">
             <div class="card">
-                <div class="card-header">Gestión de Clientes
+                <div class="card-header text-center">Gestión de Clientes
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -13,6 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="table-responsive"> 
                     <table class="table table-sm">
                         <thead>
                             <tr>
@@ -93,6 +94,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
                 <div class="card-footer">
                 <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#nuevo">Nuevo</button>

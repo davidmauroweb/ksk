@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12 col-12">
             <div class="card">
-                <div class="card-header">Gestión de Categorías
+                <div class="card-header text-center">Gestión de Categorías
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -13,6 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="table-responsive"> 
                     <table class="table table-sm">
                         <thead>
                             <tr>
@@ -73,6 +74,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
                 <div class="card-footer">
                 <form method="POST" action="{{ route('ncat') }}">

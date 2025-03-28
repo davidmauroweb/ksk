@@ -90,7 +90,7 @@
                                                     </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-success btn-sm">Editar</button>
+                                                        <button type="submit" class="btn btn-success btn-sm" disabled>Editar</button>
                                                     </div>
                                                 </form>
                                                 </div>
@@ -100,7 +100,7 @@
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                <i class="bi bi-three-dots-vertical"></i> Menu
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
